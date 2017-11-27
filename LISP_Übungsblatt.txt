@@ -1,0 +1,59 @@
+Aufgabe 1:
+a) (defun rotiere (x)
+   (append (cdr x) (list(car x))))
+
+b) (defun neues-vorletztes (x y)
+   (append (reverse1(cdr(reverse1 y))) (list x) (list(car(reverse1 y)))))
+
+c) (defun my-length (x)
+   (if (null x) 0
+   (+ 1 (my-length (cdr x)))))
+
+d) (defun my-lengthR (x) 
+   (if (null x) 0 
+   (if (atom (car x))
+   (+ 1 (my-lengthR (cdr x)))
+   (my-lengthR (append (car x) (cdr x))))))
+
+e) (defun my-reverse (x)
+   (if (null x) nil
+   (append (my-reverse (cdr x)) (list (car x)))))
+
+f) (defun my-reverseR (x)
+   (if (null x) nil
+   (if (atom (car x))
+   (append (my-reverseR (cdr x)) (list (car x)))
+   (append (my-reverseR (cdr x)) (list (my-reverseR (car x))))
+   )))
+
+
+Aufgabe 2:
+Darstellung des Binärbaums:
+Der Baum wird als Liste dreier Elemente dargestellt.
+Begonnen wird mit dem Vaterknoten, gefolgt vom linken bzw. rechten Kindknoten.
+Dieser Aufbau wird rekursiv fortgesetzt:
+(setq baum '(8 (4 (2 (1) (3)) (6)) (12 (10 () (11)))))
+
+(defun preorder (baum)
+(cond
+((null baum) 'KEINE-ELEMENTE)
+(T (princ (car baum)) (princ " ")
+(preorder (car (cdr baum)))
+(preorder (car (cdr (cdr baum))))
+)))
+
+(defun postorder (baum)
+(cond
+((null baum) 'KEINE-ELEMENTE)
+(T (postorder (car (cdr baum)))
+(postorder (car (cdr (cdr baum))))
+(princ (car baum))(princ " ")
+)))
+
+(defun inorder (baum)
+(cond
+((null baum) 'KEINE-ELEMENTE)
+(T (inorder (car (cdr baum)))
+(princ (car baum)) (princ " ")
+(inorder (car (cdr (cdr baum))))
+)))
