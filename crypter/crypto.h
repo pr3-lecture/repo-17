@@ -21,8 +21,8 @@
  * Key used in de- and encryption.
  */
 typedef struct {
-    int type; /* Type of the key. */
-    char* chars; /* Key characters. */
+	int type; /* Type of the key. */
+	char* chars; /* Key characters. */
 } KEY;
 
 /**
